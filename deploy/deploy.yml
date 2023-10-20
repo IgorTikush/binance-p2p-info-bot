@@ -15,10 +15,10 @@
       mode: '0755'
   - name: Read-write git checkout from github
     ansible.builtin.git:
-      repo: https://github.com/IgorTikush/myMap.git
+      repo: https://github.com/IgorTikush/binance-p2p-info-bot.git
       dest: /root/p2p-bot
   - name: Install packages based on package.json.
     yarn:
       path: /root/p2p-bot
   - name: run start prod
-    command: bash -lc "cd /root/p2p-bot/src && pm2 start node --interpreter bash --name api -- index.js"
+    command: bash -lc "cd /root/p2p-bot/src && pm2 start index.js"
