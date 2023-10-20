@@ -1,0 +1,11 @@
+{
+  "name": "binanc-p2p-info",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/IgorTikush/binance-p2p-info-bot.git",
+  "author": "IgorTikush <igortikush@mail.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.63.0"
+  }
+}

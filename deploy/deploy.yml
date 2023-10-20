@@ -1,0 +1,24 @@
+---
+- hosts: prod
+  tasks:
+  - name: stop p2p-bot
+    command: 'pm2 delete p2p-bot'
+    ignore_errors: yes
+  - name: Delete content & directory
+    ansible.builtin.file:
+      state: absent
+      path: /root/p2p-bot
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: /root/p2p-bot
+      state: directory
+      mode: '0755'
+  - name: Read-write git checkout from github
+    ansible.builtin.git:
+      repo: https://github.com/IgorTikush/myMap.git
+      dest: /root/p2p-bot
+  - name: Install packages based on package.json.
+    yarn:
+      path: /root/p2p-bot
+  - name: run start prod
+    command: bash -lc "cd /root/p2p-bot/src && pm2 start node --interpreter bash --name api -- index.js"
