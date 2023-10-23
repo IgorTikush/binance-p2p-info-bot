@@ -5,7 +5,12 @@
   "repository": "https://github.com/IgorTikush/binance-p2p-info-bot.git",
   "author": "IgorTikush <igortikush@mail.ru>",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
   "dependencies": {
+    "mongodb": "^6.2.0",
     "node-telegram-bot-api": "^0.63.0"
   }
 }
