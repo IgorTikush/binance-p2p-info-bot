@@ -36,7 +36,7 @@ bot.on('message', async (msg) => {
   }
 
   if (messageText.toLowerCase() === 'start') {
-    const isChatInWhitelist = await db?.collection('chats')?.findOne({ chatId }).catch(() => false);
+    const isChatInWhitelist = await db?.collection('chats')?.findOne({ chatId: chatId.toString() }).catch(() => false);
     if (!isChatInWhitelist) {
       bot.sendMessage(chatId, 'chat is not in a whitelist');
       return;
