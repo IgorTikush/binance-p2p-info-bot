@@ -17,12 +17,15 @@ bot.on('message', async (msg) => {
   if (messageText.toLowerCase().includes('addchat')) {
     const telegramUserId = msg.from.id.toString();
     const isAdmin = await db?.collection('users')?.findOne({ telegramId: telegramUserId, isAdmin: true }).catch(() => false);
+    console.log(msg);
     if (!isAdmin) {
       bot.sendMessage(chatId, 'you are not admin');
       return;
     }
 
-    const isSuccess = await db?.collection('chats')?.insertOne({ chatId }).catch(() => false);
+    const chatIdToAdd = msg.text.split(' ')[1];
+    console.log(chatIdToAdd);
+    const isSuccess = await db?.collection('chats')?.insertOne({ chatId: chatIdToAdd }).catch(() => false);
 
     if (!isSuccess) {
       bot.sendMessage(chatId, 'error adding chat to whitelist');
