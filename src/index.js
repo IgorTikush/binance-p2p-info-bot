@@ -1,4 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api';
+import https from 'https';
 
 import { db } from './db/index.js';
 
